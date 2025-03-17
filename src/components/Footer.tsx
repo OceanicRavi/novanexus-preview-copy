@@ -12,13 +12,13 @@ export function Footer() {
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
-              href="mailto:contact@novanexus.ai"
+              href="mailto:18ravibhatt@gmail.com"
               className="text-primary-600 hover:text-primary-700"
             >
               <Mail className="h-5 w-5" />
             </a>
             <a
-              href="https://linkedin.com/company/novanexus"
+              href="https://www.linkedin.com/in/ravi-bhatt-219a10ab/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary-600 hover:text-primary-700"

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Atom } from 'lucide-react';
+import { BrainCircuit  } from 'lucide-react';
 
 export function Navbar() {
   return (
@@ -9,9 +9,9 @@ export function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <div className="relative">
-                <Atom className="h-8 w-8 text-primary-600 animate-pulse" />
+                <BrainCircuit  className="h-8 w-8 text-secondary-200 animate-pulse" />
                 <div className="absolute inset-0 h-8 w-8 text-secondary-500 mix-blend-multiply animate-pulse delay-150">
-                  <Atom className="h-8 w-8" />
+                  <BrainCircuit  className="h-8 w-8" />
                 </div>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">
