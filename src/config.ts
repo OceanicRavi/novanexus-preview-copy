@@ -15,5 +15,9 @@ export const config = {
       ragAgentToken: import.meta.env.VITE_RAG_AGENT_TOKEN || 'default_rag_token',
       textToVideoToken: import.meta.env.VITE_TEXT_TO_VIDEO_TOKEN || 'default_text_to_video_token',
     },
+
+    baseUri: {
+      textToVideoBucket: import.meta.env.VITE_CLOUDFARE_BUCKET|| 'https://pub-62e9bcf1884d4960bdda9d401aa58154.r2.dev',
+    },
   };
   

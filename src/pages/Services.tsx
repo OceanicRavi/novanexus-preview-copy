@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { FileText, Video, Mic, Radio, BarChart3, Map, Play } from 'lucide-react';
+import { FileText, Video, Mic, Radio, BarChart3, Map, Play, Hourglass } from 'lucide-react';
 import { Button } from '../components/Button';
+import { config } from '../config';
 
 export function Services() {
   const location = useLocation();
@@ -22,7 +23,8 @@ export function Services() {
     { id: 'voice', label: 'AI Voice Agent', icon: Mic },
     { id: 'anchor', label: 'AI Anchor', icon: Radio },
     { id: 'sentiment', label: 'Sentiment Analysis', icon: BarChart3 },
-    { id: 'routes', label: 'Open Home Routes', icon: Map }
+    { id: 'routes', label: 'Open Home Routes', icon: Map },
+    { id: 'upcoming', label: 'Coming Soon', icon: Hourglass }
   ];
 
   const voiceOptions = [
@@ -209,49 +211,77 @@ export function Services() {
           {activeTab === 'text-to-video' && (
             <>
               {/* Left Panel - Examples */}
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-6">Video Examples</h2>
-                {[
+              <div className="space-y-6">
+                <h2 className="text-2xl font-bold mb-6">🎥 Text-to-Video Examples</h2>
+                {[  
                   {
-                    title: 'Product Showcase',
-                    description: 'Dynamic product demonstrations with cinematic quality.',
-                    video: 'https://images.unsplash.com/photo-1626908013351-800ddd734b8a?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Feature Highlights', '360° Views', 'Usage Tutorials']
+                    title: 'Event Showcase',
+                    description: 'Capture the vibrant energy of a Holi celebration in Auckland, highlighting the joyful colors, music, and dance. Showcase the cultural fusion of Indian traditions with a global audience, featuring the Mumbai Local food stall serving authentic street food. Use dynamic camera shots, slow-motion color bursts, and upbeat festival music to create an immersive experience.',
+                    video: `${config.baseUri.textToVideoBucket}/mumbailocal.mp4`,
+                    thumbnail: `${config.baseUri.textToVideoBucket}/mumbailocal_thumbnail.png`,
+                    examples: ['Tourism', 'Public awareness', 'Government campaigns', 'Event promotions']
                   },
                   {
-                    title: 'Brand Stories',
-                    description: 'Compelling narratives that capture your brand essence.',
-                    video: 'https://images.unsplash.com/photo-1622737133809-d95047b9e673?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Company Culture', 'Behind the Scenes', 'Customer Stories']
+                    title: 'Brand Marketing',
+                    description: `Produce an electrifying promotional video showcasing 1ShotBuilders' cutting-edge solutions. Use high-energy transitions, sharp typography, and animated graphics to highlight brand expertise, testimonials, and real-world success stories. Finish with a compelling call-to-action to boost engagement.`,
+                    video: `${config.baseUri.textToVideoBucket}/1shotBuilders.mp4`,
+                    thumbnail: `${config.baseUri.textToVideoBucket}/1shotbuilders_thumbnail.png`,
+                    examples: ['Product launches', 'Investor pitches', 'Trade shows', 'E-commerce']
+                  },
+                  {
+                    title: 'Interactive Content',
+                    description: 'Bring the prehistoric era to life with an animated scene featuring dinosaurs in action. Use vibrant colors, engaging movements, and realistic sounds to create an entertaining yet educational experience. Suitable for kids, gaming content, or themed attraction promos.',
+                    video: `${config.baseUri.textToVideoBucket}/dinosaurs.mp4`,
+                    thumbnail: `${config.baseUri.textToVideoBucket}/dinosaur_thumbnail.png`,
+                    examples: ['Kids` education', 'How-to Guides', 'VR/AR experiences', 'Trailers & Teasers']
                   },
                   {
                     title: 'Educational Content',
-                    description: 'Engaging learning materials with visual explanations.',
-                    video: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Course Modules', 'How-to Guides', 'Concept Explainers']
+                    description: 'Create a visually immersive medical animation highlighting the Palmaris Longus muscle, a little-known forearm structure. Use a mix of 3D anatomical models, overlays, and real-world comparisons to explain its presence, function, and clinical significance. End with applications in surgical tendon grafting and self-diagnosis techniques.',
+                    video: `${config.baseUri.textToVideoBucket}/medical.mp4`,
+                    thumbnail: `${config.baseUri.textToVideoBucket}/medical_thumbnail.png`,
+                    examples: ['Course Modules', 'Medical training', 'Concept Explainers', 'Fitness science', 'Awareness Campaigns']
+                  },
+                  {
+                    title: 'Personal Branding',
+                    description: 'Craft an engaging podcast visual for an influencer discussing deep and meaningful conversations. Use smooth text animations, dynamic audio waveforms, and a cinematic color palette to enhance storytelling. Perfect for thought leaders, personal branding, and social media engagement.',
+                    video: `${config.baseUri.textToVideoBucket}/behkibatein.mp4`,
+                    thumbnail: `${config.baseUri.textToVideoBucket}/behkibatein_thumbnail.png`,
+                    examples: ['Podcast', 'Storytelling', 'Customer Stories', 'Lyric videos']
                   }
                 ].map((category, index) => (
-                  <div key={index} className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors">
-                    <div className="relative h-48">
-                      <img
-                        src={category.video}
-                        alt={category.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                        <div className="p-4">
-                          <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                          <p className="text-white/80 text-sm">{category.description}</p>
+                  <div key={index} className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors flex flex-col md:flex-row">
+                    {/* Left side - Description */}
+                    <div className="p-6 flex flex-col justify-between md:w-2/3">
+                      <div>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-3">{category.title}</h3>
+                        <p className="text-gray-600 mb-4 relative pl-8 pr-8">
+                          <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">“</span>
+                          {category.description}
+                          <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">”</span>
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {category.examples.map((example, i) => (
+                            <span key={i} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
+                              {example}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
-                    <div className="p-4 bg-primary-50">
-                      <div className="flex flex-wrap gap-2">
-                        {category.examples.map((example, i) => (
-                          <span key={i} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
-                            {example}
-                          </span>
-                        ))}
+                    
+                    {/* Right side - Video */}
+                    <div className="md:w-1/3 relative flex justify-center items-center p-4">
+                      <div className="aspect-[9/16] w-full max-w-xs relative">
+                        <video
+                          src={category.video}
+                          className="w-full h-full object-cover rounded-lg"
+                          controls
+                          preload="metadata"
+                          poster={category.thumbnail}
+                        >
+                          Your browser does not support the video tag.
+                        </video>
                       </div>
                     </div>
                   </div>
@@ -260,22 +290,22 @@ export function Services() {
 
               {/* Right Panel - Playground */}
               <div className="bg-white p-8 rounded-lg shadow-sm border border-primary-100">
-                <h2 className="text-2xl font-bold mb-6">Video Generator</h2>
+                <h2 className="text-2xl font-bold mb-6">Text-to-Video Generator</h2>
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Authentication Token
+                    🛡️ Access Token
                     </label>
                     <input
                       type="password"
                       className="w-full rounded-md border border-primary-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                      placeholder="Enter your API token"
+                      placeholder="Enter your Access token"
                     />
-                    <p className="mt-1 text-sm text-gray-500">Required for accessing video generation features</p>
+                    <p className="mt-1 text-sm text-gray-500">🎥 Want to generate videos? This feature isn't publicly available to prevent misuse, but just reach out to me, and I’ll hook you up with access! 🔑😊</p>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Script
+                    🤔 What's on your mind? 💭
                     </label>
                     <textarea
                       className="w-full rounded-md border border-primary-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -882,6 +912,70 @@ export function Services() {
                     Generate Route
                   </button>
                 </div>
+              </div>
+            </>
+          )}
+
+          {/* Upcoming Work */}
+          {activeTab === 'upcoming' && (
+            <>
+              {/* Left Panel - Features in Development */}
+              <div className="space-y-4">
+                <h2 className="text-2xl font-bold mb-6">🚀 Upcoming Features</h2>
+                {[
+                  {
+                    title: 'AI Lead Generator',
+                    description: 'Automated lead generation powered by AI for businesses.',
+                    image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=400',
+                    examples: ['B2B Outreach', 'Sales Funnel Optimization', 'Targeted Lead Discovery']
+                  },
+                  {
+                    title: 'AI Job Applications',
+                    description: 'AI-driven job search that finds openings and applies for you.',
+                    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=400',
+                    examples: ['Resume Parsing', 'Job Match Optimization', 'Auto-Apply to Openings']
+                  },
+                  {
+                    title: 'AI Cost Optimization',
+                    description: 'Reducing costs and improving efficiency for AI-powered workflows.',
+                    image: 'https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?auto=format&fit=crop&q=80&w=400',
+                    examples: ['Cloud Cost Reduction', 'AI Workflow Optimization', 'Resource Scaling']
+                  }
+                ].map((feature, index) => (
+                  <div key={index} className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors">
+                    <div className="relative h-48">
+                      <img
+                        src={feature.image}
+                        alt={feature.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                        <div className="p-4">
+                          <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                          <p className="text-white/80 text-sm">{feature.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-4 bg-primary-50">
+                      <div className="flex flex-wrap gap-2">
+                        {feature.examples.map((example, i) => (
+                          <span key={i} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
+                            {example}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Right Panel - Stay Updated */}
+              <div className="bg-white p-8 rounded-lg shadow-sm border border-primary-100">
+                <h2 className="text-2xl font-bold mb-6">🔜 Stay Tuned!</h2>
+                <p className="text-gray-600 mb-4">We’re actively working on these features to bring you the best AI-powered tools. Stay updated and let us know what excites you the most! 🎯</p>
+                <button className="w-full bg-primary-600 text-white py-2 rounded-md hover:bg-primary-700 transition-colors">
+                  🔔 Get Notified
+                </button>
               </div>
             </>
           )}
