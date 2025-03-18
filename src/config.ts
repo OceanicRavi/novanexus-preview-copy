@@ -17,7 +17,7 @@ export const config = {
     },
 
     baseUri: {
-      textToVideoBucket: import.meta.env.VITE_CLOUDFARE_BUCKET|| 'https://pub-62e9bcf1884d4960bdda9d401aa58154.r2.dev',
+      textToVideoBucket: import.meta.env.VITE_CLOUDFARE_BUCKET|| 'url to cloudfare bucket',
     },
   };
   
