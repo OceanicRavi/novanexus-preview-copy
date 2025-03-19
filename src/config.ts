@@ -17,7 +17,9 @@ export const config = {
     },
 
     baseUri: {
-      textToVideoBucket: import.meta.env.VITE_CLOUDFARE_BUCKET|| 'url to cloudfare bucket',
+      textToVideoBucket: import.meta.env.VITE_CLOUDFARE_BUCKET|| 'url to cloudfare TextToVideo bucket',
+      ragBucket: import.meta.env.VITE_RAG_BUCKET|| 'url to cloudfare RAG bucket',
+      ragWebhook: import.meta.env.VITE_RAG_WEBHOOK|| 'url to n8n RAG webhook',
     },
   };
   

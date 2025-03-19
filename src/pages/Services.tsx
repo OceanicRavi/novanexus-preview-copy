@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FileText, Video, Mic, Radio, BarChart3, Map, Play, Hourglass } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../components/Dialog";
 import { Button } from '../components/Button';
 import { config } from '../config';
+import Chatbot from '../components/Chatbot';
 
 export function Services() {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('rag');
   const [previewVoice, setPreviewVoice] = useState<string | null>(null);
+  const [previewDoc, setPreviewDoc] = useState<string | null>(null);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -59,11 +63,10 @@ export function Services() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium transition-colors whitespace-nowrap ${
-                  activeTab === tab.id
+                className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === tab.id
                     ? 'border-b-2 border-primary-600 text-primary-600'
                     : 'text-gray-500 hover:text-primary-600 hover:border-b-2 hover:border-primary-200'
-                }`}
+                  }`}
               >
                 <Icon className="h-4 w-4" />
                 <span>{tab.label}</span>
@@ -78,47 +81,59 @@ export function Services() {
             <>
               {/* Left Panel - Examples */}
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-6">Document Processing Examples</h2>
+                <h2 className="text-2xl font-bold mb-6">📑 Document Processing Examples</h2>
                 {[
                   {
                     title: 'Legal Document Analysis',
                     description: 'Intelligent contract review and legal document processing.',
                     image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Contract Review', 'Compliance Check', 'Case Analysis']
+                    examples: ['Contract Review', 'Compliance Check', 'Case Analysis'],
+                    docUrl: `${config.baseUri.ragBucket}/policy_guidelines.pdf`
                   },
                   {
-                    title: 'Financial Reports',
+                    title: 'E-commerce Reports',
                     description: 'Automated analysis of financial documents and reports.',
                     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Earnings Reports', 'Risk Assessment', 'Market Analysis']
+                    examples: ['Earnings Reports', 'Risk Assessment', 'Market Analysis'],
+                    docUrl: `${config.baseUri.ragBucket}/mcd_nutritions.pdf`
                   },
                   {
                     title: 'Technical Documentation',
                     description: 'Process and analyze technical documents and manuals.',
                     image: 'https://images.unsplash.com/photo-1623479322729-28b25c16b011?auto=format&fit=crop&q=80&w=400',
-                    examples: ['API Documentation', 'User Manuals', 'Technical Specs']
+                    examples: ['API Documentation', 'User Manuals', 'Technical Specs'],
+                    docUrl: `${config.baseUri.ragBucket}/medical_book.pdf`
                   }
                 ].map((category, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors">
                     <div className="relative h-48">
-                      <img
-                        src={category.image}
-                        alt={category.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                        <div className="p-4">
+                      <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                        <div className="absolute top-4 right-4 space-y-2">
+                          <Button
+                            className="relative px-4 py-2 rounded-lg shadow-md text-primary-700 bg-white transition-all hover:bg-gradient-to-r from-white via-primary-100 to-white"
+                            onClick={() => setPreviewDoc(category.docUrl)}
+                          >
+                            Preview
+                          </Button>
+
+                          <Button
+                            className="relative px-4 py-2 rounded-lg shadow-md text-white bg-primary-600 transition-all hover:bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600"
+                            onClick={() => setIsChatbotOpen(true)}
+                          >
+                            Try Now
+                          </Button>
+                        </div>
+                        <div>
                           <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
                           <p className="text-white/80 text-sm">{category.description}</p>
                         </div>
                       </div>
                     </div>
                     <div className="p-4 bg-primary-50">
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {category.examples.map((example, i) => (
-                          <span key={i} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
-                            {example}
-                          </span>
+                          <span key={i} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">{example}</span>
                         ))}
                       </div>
                     </div>
@@ -128,7 +143,7 @@ export function Services() {
 
               {/* Right Panel - Document Upload */}
               <div className="bg-white p-8 rounded-lg shadow-sm border border-primary-100">
-                <h2 className="text-2xl font-bold mb-6">Document Analysis</h2>
+                <h2 className="text-2xl font-bold mb-6">🔍 Document Analysis</h2>
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -204,6 +219,28 @@ export function Services() {
                   </button>
                 </div>
               </div>
+
+              {/* Document Preview Modal */}
+              {previewDoc && (
+                <Dialog open={!!previewDoc} onOpenChange={(open) => {
+                  if (!open) setPreviewDoc(null);
+                }}>
+                  <DialogContent className="w-full max-w-3xl">
+                    <DialogHeader>
+                      <DialogTitle>📄 Explore the Document</DialogTitle>
+                      <DialogDescription>View the full content below and click 'Try Now' to ask any questions in the chatbot! 🤖💬</DialogDescription>
+                    </DialogHeader>
+                    <div className="mt-4">
+                      <iframe src={previewDoc} className="w-full h-[500px]" title="Document Preview" />
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              )}
+
+              {/* Chatbot Widget */}
+              {isChatbotOpen && (
+                <Chatbot />
+              )}
             </>
           )}
 
@@ -213,7 +250,7 @@ export function Services() {
               {/* Left Panel - Examples */}
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold mb-6">🎥 Text-to-Video Examples</h2>
-                {[  
+                {[
                   {
                     title: 'Event Showcase',
                     description: 'Capture the vibrant energy of a Holi celebration in Auckland, highlighting the joyful colors, music, and dance. Showcase the cultural fusion of Indian traditions with a global audience, featuring the Mumbai Local food stall serving authentic street food. Use dynamic camera shots, slow-motion color bursts, and upbeat festival music to create an immersive experience.',
@@ -269,7 +306,7 @@ export function Services() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Right side - Video */}
                     <div className="md:w-1/3 relative flex justify-center items-center p-4">
                       <div className="aspect-[9/16] w-full max-w-xs relative">
@@ -294,7 +331,7 @@ export function Services() {
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                    🛡️ Access Token
+                      🛡️ Access Token
                     </label>
                     <input
                       type="password"
@@ -305,7 +342,7 @@ export function Services() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                    🤔 What's on your mind? 💭
+                      🤔 What's on your mind? 💭
                     </label>
                     <textarea
                       className="w-full rounded-md border border-primary-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -690,7 +727,7 @@ export function Services() {
                       "Just tried the new AI feature update - absolutely love how intuitive it is! The response time is incredible, though it took me a moment to get used to the new interface. A bit frustrated with the pricing change, but the value is definitely there. Can't wait to see what's next! 🚀 #TechInnovation #UserExperience"
                     </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-3">Emotional Breakdown</h3>
@@ -733,7 +770,7 @@ export function Services() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-3">Sentiment Overview</h3>
                       <div className="space-y-4">
