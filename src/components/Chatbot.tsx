@@ -9,8 +9,8 @@ interface Message {
   isUser: boolean;
 }
 
-const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boolean) => void }) => {
+  //const [isOpen, setIsOpen] = useState(false);
   const [selectedProperties, setSelectedProperties] = useState<string[]>([]);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
