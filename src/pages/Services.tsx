@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FileText, Video, Mic, Radio, BarChart3, Map, Play, Hourglass } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../components/Dialog";
@@ -12,6 +12,7 @@ export function Services() {
   const [previewVoice, setPreviewVoice] = useState<string | null>(null);
   const [previewDoc, setPreviewDoc] = useState<string | null>(null);
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -46,13 +47,38 @@ export function Services() {
     console.log('Playing preview for voice:', voiceId);
   };
 
+
+  const handlePlayPause = (index: number) => {
+    const audio = document.getElementById(`audio-${index}`) as HTMLAudioElement;
+
+    // Stop all other audio elements
+    document.querySelectorAll('audio').forEach(element => {
+      if (element.id !== `audio-${index}`) {
+        element.pause();
+      }
+    });
+
+    // Toggle play/pause for the clicked audio
+    if (audio.paused) {
+      audio.play();
+      setPlayingIndex(index);
+    } else {
+      audio.pause();
+      setPlayingIndex(null);
+    }
+  };
+
+
   return (
     <div className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Our Services</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">Welcome to Your AI Playground</h1>
+          <h3 className="text-xl font-bold text-foreground mb-4">Try It. Tweak It. Make It Yours.</h3>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore our comprehensive suite of AI-powered solutions designed to transform your business.
+            See what our AI can do.
+            Explore live examples, play with ready-made workflows, and discover ideas you didn’t know you needed.
+            If it sparks something, we’ll help you build your own version.
           </p>
         </div>
 
@@ -64,8 +90,8 @@ export function Services() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === tab.id
-                    ? 'border-b-2 border-primary-600 text-primary-600'
-                    : 'text-gray-500 hover:text-primary-600 hover:border-b-2 hover:border-primary-200'
+                  ? 'border-b-2 border-primary-600 text-primary-600'
+                  : 'text-gray-500 hover:text-primary-600 hover:border-b-2 hover:border-primary-200'
                   }`}
               >
                 <Icon className="h-4 w-4" />
@@ -239,7 +265,7 @@ export function Services() {
 
               {/* Chatbot Widget */}
               {isChatbotOpen && (
-                <Chatbot />
+                <Chatbot isOpen={isChatbotOpen} setIsOpen={setIsChatbotOpen} />
               )}
             </>
           )}
@@ -411,25 +437,28 @@ export function Services() {
             <>
               {/* Left Panel - Examples */}
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-6">Voice Examples</h2>
+                <h2 className="text-2xl font-bold mb-6">📢Text-to-Voice Examples</h2>
                 {[
                   {
                     title: 'Inbound Call Handling',
                     description: 'AI-powered customer service and support.',
                     image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Support Inquiries', 'Appointment Scheduling', 'Product Information']
-                  },
-                  {
-                    title: 'Outbound Campaigns',
-                    description: 'Proactive customer engagement and follow-ups.',
-                    image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Appointment Reminders', 'Feedback Collection', 'Service Updates']
+                    examples: ['Support Inquiries', 'Appointment Scheduling', 'Product Information'],
+                    audio: `${config.baseUri.aiVoiceBucket}/inbound.mp3`
                   },
                   {
                     title: 'Multilingual Support',
                     description: 'Global customer service in multiple languages.',
-                    image: 'https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Language Detection', 'Real-time Translation', 'Cultural Adaptation']
+                    image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=400',
+                    examples: ['Language Detection', 'Real-time Translation', 'Cultural Adaptation'],
+                    audio: `${config.baseUri.aiVoiceBucket}/multilingual.mp3`
+                  },
+                  {
+                    title: 'Sound Effects',
+                    description: 'Generate sound effects for your use case',
+                    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=400',
+                    examples: ['Background Music', 'Relaxation Sounds', 'Generative Music'],
+                    audio: `${config.baseUri.aiVoiceBucket}/jungle_sound.mp3`
                   }
                 ].map((category, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors">
@@ -439,13 +468,40 @@ export function Services() {
                         alt={category.title}
                         className="w-full h-full object-cover"
                       />
+
+                      {/* Dark gradient overlay for better text visibility */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                         <div className="p-4">
                           <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
                           <p className="text-white/80 text-sm">{category.description}</p>
                         </div>
                       </div>
+
+                      {/* Centered Transparent Audio Player Overlay with Orange Play Button */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <button
+                          onClick={() => handlePlayPause(index)}
+                          className="p-4 bg-black/30 hover:bg-black/50 rounded-full transition duration-300"
+                        >
+                          {playingIndex === index ? (
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="orange" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                            </svg>
+                          ) : (
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="orange" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          )}
+                        </button>
+                        <audio id={`audio-${index}`} className="hidden">
+                          <source src={category.audio} type="audio/mp3" />
+                          Your browser does not support the audio element.
+                        </audio>
+
+
+                      </div>
                     </div>
+
                     <div className="p-4 bg-primary-50">
                       <div className="flex flex-wrap gap-2">
                         {category.examples.map((example, i) => (
@@ -461,7 +517,7 @@ export function Services() {
 
               {/* Right Panel - Voice Generator */}
               <div className="bg-white p-8 rounded-lg shadow-sm border border-primary-100">
-                <h2 className="text-2xl font-bold mb-6">AI Call Agent Setup</h2>
+                <h2 className="text-2xl font-bold mb-6">🔊 AI Call Agent Setup</h2>
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -562,46 +618,105 @@ export function Services() {
           {activeTab === 'anchor' && (
             <>
               {/* Left Panel - Examples */}
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-6">AI Anchor Examples</h2>
-                {[
-                  {
-                    title: 'News Broadcasting',
-                    description: 'Professional news delivery with AI anchors.',
-                    image: 'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Breaking News', 'Weather Reports', 'Sports Updates']
-                  },
-                  {
-                    title: 'Corporate Communications',
-                    description: 'Professional business presentations and updates.',
-                    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Earnings Reports', 'Company Updates', 'Product Launches']
-                  },
-                  {
-                    title: 'Educational Content',
-                    description: 'Engaging educational presentations and lectures.',
-                    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=400',
-                    examples: ['Online Courses', 'Tutorial Videos', 'Educational Series']
-                  }
-                ].map((category, index) => (
-                  <div key={index} className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors">
-                    <div className="relative h-48">
-                      <img
-                        src={category.image}
-                        alt={category.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                        <div className="p-4">
-                          <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                          <p className="text-white/80 text-sm">{category.description}</p>
+              <div className="space-y-6">
+                <h2 className="text-2xl font-bold mb-6">🤖 AI Anchor Examples</h2>
+                <h4 className="text font-bold mb-6">These are purely created by AI.</h4>
+                {/* News Broadcasting - Portrait Video */}
+                {[{
+                  title: 'News Broadcasting',
+                  description: 'Taranaki Maunga becomes a legal person as treaty settlement passes into law.',
+                  video: `${config.baseUri.textToVideoBucket}/anchor.mp4`,
+                  thumbnail: `${config.baseUri.textToVideoBucket}/anchor_thumbnail.png`,
+                  thumbnailLarge: `${config.baseUri.textToVideoBucket}/anchor_thumbnail.png`, // Added large thumbnail
+                  videoAspect: '9/16',
+                  examples: ['Breaking News', 'Weather Reports', 'Sports Updates', 'Viral Clips', 'Brand Yourself']
+                }].map((category, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors flex flex-col md:flex-row"
+                  >
+                    {/* Left side - Description */}
+                    <div className="p-6 flex flex-col justify-between md:w-2/3">
+                      <div>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-3">{category.title}</h3>
+                        <p className="text-gray-600 mb-4 relative pl-8 pr-8">
+                          <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                          {category.description}
+                          <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {category.examples.map((example, i) => (
+                            <span
+                              key={i}
+                              className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm"
+                            >
+                              {example}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
-                    <div className="p-4 bg-primary-50">
+
+                    {/* Right side - Video */}
+                    <div className="md:w-1/3 relative flex justify-center items-center p-4">
+                      <div
+                        className={`aspect-[${category.videoAspect}] w-full max-w-xs relative`}
+                      >
+                        <video
+                          src={category.video}
+                          className="w-full h-full object-cover rounded-lg"
+                          controls
+                          preload="metadata"
+                          poster={category.thumbnailLarge} // Use large thumbnail as poster
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Corporate Communications - Landscape Video */}
+                {[{
+                  title: 'Marketing and Communications',
+                  description: 'Small switch, big eco win — these KiwiGreen bags crushed my avocado test and ditched the plastic!',
+                  video: `${config.baseUri.textToVideoBucket}/market.mp4`,
+                  thumbnail: `${config.baseUri.textToVideoBucket}/market_thumbnail.png`,
+                  thumbnailLarge: `${config.baseUri.textToVideoBucket}/market_thumbnail.png`, // Added large thumbnail
+                  videoAspect: '16/9',
+                  examples: ['Business Reports', 'Company Updates', 'User-Generated Content ads']
+                }].map((category, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg shadow-sm border border-primary-100 overflow-hidden hover:border-primary-300 transition-colors flex flex-col"
+                  >
+                    {/* Landscape Video */}
+                    <div className="w-full aspect-[16/9]">
+                      <video
+                        src={category.video}
+                        className="w-full h-full object-cover"
+                        controls
+                        preload="metadata"
+                        poster={category.thumbnailLarge} // Use large thumbnail as poster
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+
+                    {/* Description Section */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">{category.title}</h3>
+                      <p className="text-gray-600 mb-4 relative pl-8 pr-8">
+                          <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                          {category.description}
+                          <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                        </p>
                       <div className="flex flex-wrap gap-2">
                         {category.examples.map((example, i) => (
-                          <span key={i} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
+                          <span
+                            key={i}
+                            className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm"
+                          >
                             {example}
                           </span>
                         ))}
@@ -613,7 +728,7 @@ export function Services() {
 
               {/* Right Panel - Anchor Creator */}
               <div className="bg-white p-8 rounded-lg shadow-sm border border-primary-100">
-                <h2 className="text-2xl font-bold mb-6">AI Anchor Creator</h2>
+                <h2 className="text-2xl font-bold mb-6">🗣️ AI Anchor Creator</h2>
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">

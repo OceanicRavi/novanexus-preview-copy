@@ -8,9 +8,9 @@ export function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
             <div className="relative">
-              <img src="/novanexus_logo.jpeg" className="h-8 w-8 animate-pulse" alt="Nova Nexus Logo" />
+              <img src="/novanexus_logo.png" className="h-8 w-8 animate-pulse" alt="Nova Nexus Logo" />
               <div className="absolute inset-0 h-8 w-8 mix-blend-multiply animate-pulse delay-150">
-                <img src="/novanexus_logo.jpeg" className="h-8 w-8" alt="Nova Nexus Logo" />
+                <img src="/novanexus_logo.png" className="h-8 w-8" alt="Nova Nexus Logo" />
               </div>
             </div>
               <span className="text-xl font-bold bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">

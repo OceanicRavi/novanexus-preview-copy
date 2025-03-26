@@ -20,6 +20,7 @@ export const config = {
       textToVideoBucket: import.meta.env.VITE_CLOUDFARE_BUCKET|| 'url to cloudfare TextToVideo bucket',
       ragBucket: import.meta.env.VITE_RAG_BUCKET|| 'url to cloudfare RAG bucket',
       ragWebhook: import.meta.env.VITE_RAG_WEBHOOK|| 'url to n8n RAG webhook',
+      aiVoiceBucket: import.meta.env.VITE_VOICE_BUCKET|| 'url to cloudfare AI Voice bucket'
     },
   };
   
