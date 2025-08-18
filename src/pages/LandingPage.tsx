@@ -311,7 +311,7 @@ export function LandingPage() {
                   </div>
                 </div>
 
-                {service.id === 'chatbot' ? (
+                {service.id === 'content' ? (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {service.examples.map((category, index) => (
                       <div key={index} className="bg-gray-800/30 p-6 rounded-lg border border-gray-700 hover:bg-gray-800/50 transition-colors">
@@ -327,12 +327,12 @@ export function LandingPage() {
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {service.examples.map((example, index) => (
                       <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all">
-                        <div className="relative h-40">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                        </div>
-                        <div className="p-4">
+                        <div className="p-6">
                           <h4 className="text-lg font-semibold text-white mb-2">{example.title}</h4>
-                          <p className="text-gray-300 text-sm mb-3">{example.description}</p>
+                          <p className="text-gray-300 mb-4 text-sm">{example.description}</p>
+                          <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-600 mb-4">
+                            <pre className="text-xs text-gray-300 whitespace-pre-wrap font-mono">{example.example}</pre>
+                          </div>
                           {example.videoUrl && (
                             <div className="mt-4">
                               <video 
@@ -414,7 +414,7 @@ export function LandingPage() {
           </div>
 
           <div className="mt-16 bg-gray-800/30 rounded-lg p-8 border border-gray-700">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">Why Choose NovaNexus?</h3>
+            <h3 className="text-2xl font-bold mb-6 text-white text-center">Why Choose NovaNexus?</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -528,7 +528,7 @@ export function LandingPage() {
               </div>
 
               <div className="bg-gray-800/30 rounded-lg p-6 border border-gray-700">
-                <h4 className="text-lg font-semibold text-white mb-4">What happens next?</h4>
+                <h4 className="text-lg font-semibold mb-4 text-white">What happens next?</h4>
                 <div className="space-y-3">
                   <div className="flex items-start">
                     <div className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</div>
@@ -536,11 +536,11 @@ export function LandingPage() {
                   </div>
                   <div className="flex items-start">
                     <div className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</div>
-                    <p className="text-gray-300 text-sm">We'll create a custom proposal tailored to your specific needs</p>
+                    <p className="text-gray-300 text-sm">We'll create a custom proposal with timeline and pricing</p>
                   </div>
                   <div className="flex items-start">
                     <div className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</div>
-                    <p className="text-gray-300 text-sm">Once approved, we'll begin implementation with full support</p>
+                    <p className="text-gray-300 text-sm">Once approved, we'll begin development and keep you updated throughout</p>
                   </div>
                 </div>
               </div>
