@@ -29,13 +29,13 @@ export function Home() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/services">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 group">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 hover:text-gray-100 group">
                     Get started
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline">
+                  <Button size="lg" variant="outline" className="hover:text-gray-100">
                     Contact us
                   </Button>
                 </Link>

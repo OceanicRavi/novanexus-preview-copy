@@ -76,7 +76,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boo
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-full shadow-lg hover:from-blue-600 hover:to-purple-700 transition-all"
+          className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-full shadow-lg hover:from-blue-600 hover:to-purple-700 hover:text-gray-100 transition-all"
         >
           <MessageCircle className="h-6 w-6" />
         </button>
@@ -84,11 +84,11 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boo
 
       {isOpen && (
         <div className="bg-gray-800/95 backdrop-blur-sm rounded-lg shadow-xl w-96 max-h-[600px] flex flex-col border border-gray-700">
-          <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg flex justify-between items-center">
+          <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg flex justify-between items-center hover:from-blue-600 hover:to-purple-700 transition-all">
             <h3 className="font-semibold">Chat with Us</h3>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-white hover:text-gray-200 transition-colors"
+              className="text-white hover:text-gray-100 transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
@@ -127,7 +127,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boo
               />
               <button
                 type="submit"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-2 rounded-lg hover:from-blue-600 hover:to-purple-700 hover:text-gray-100 transition-all"
                 disabled={isLoading}
               >
                 <Send className="h-5 w-5" />
