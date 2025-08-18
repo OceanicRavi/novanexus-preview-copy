@@ -479,5 +479,3 @@ export function LandingPage() {
     </div>
   );
 }
-
-export { LandingPage }
