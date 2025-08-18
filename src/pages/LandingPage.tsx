@@ -294,31 +294,20 @@ export function LandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">AI Solutions & Examples</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Discover how our AI services can transform your business operations with real-world examples and use cases.
-            </p>
+                  <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all">
+                    <div className="relative h-40">
           </div>
-
-          <div className="space-y-24">
-            {services.map((service, index) => (
-              <div key={service.id} className="relative">
-                <div className="flex items-center mb-8">
-                  <div className={`bg-gradient-to-r ${service.color} p-3 rounded-lg mr-4`}>
-                    {service.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-3xl font-bold text-white">{service.title}</h3>
-                    <p className="text-lg text-gray-300">{service.description}</p>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-8">
-                  {service.examples.map((example, exampleIndex) => (
-                    <div key={exampleIndex} className="bg-gray-800/30 rounded-lg p-6 border border-gray-700 hover:bg-gray-800/50 transition-all">
-                      <h4 className="text-xl font-semibold text-white mb-3">{example.title}</h4>
-                      <p className="text-gray-300 mb-4">{example.description}</p>
-                      <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600">
-                        <pre className="text-sm text-gray-300 whitespace-pre-wrap font-mono">{example.example}</pre>
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    </div>
+                    <div className="p-4">
+                      <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
+                        href={category.docUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm"
+                      >
+                        View Sample Document →
+                      </a>
                       {example.videoUrl && (
                         <div className="mt-4">
                           <video 
@@ -347,9 +336,8 @@ export function LandingPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
+              <div className="space-y-8">
+                <p className="text-gray-300 text-center">These are purely created by AI.</p>
 
       {/* About Section */}
       <section id="about" className="py-24 bg-gray-900">
@@ -386,22 +374,19 @@ export function LandingPage() {
               <div className="bg-gray-800/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-700">
                 <MessageSquare className="h-8 w-8 text-green-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Our Commitment</h3>
+                    className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all flex flex-col lg:flex-row"
               <p className="text-gray-400">
-                Personal support, practical solutions, and community-first approach to help you succeed with AI technology.
-              </p>
+                    <div className="p-6 flex flex-col justify-between lg:w-2/3">
             </div>
-          </div>
-        </div>
-      </section>
+                        <h4 className="text-xl font-semibold text-white mb-3">{category.title}</h4>
+                        <p className="text-gray-300 mb-4">
 
-      {/* Contact Section */}
       <section id="contact" className="py-24 bg-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Get Started Today</h2>
             <p className="text-xl text-gray-300">
-              Ready to transform your business with AI? Get in touch and let's discuss your needs.
+                              className="px-2 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs"
             </p>
           </div>
 
@@ -409,18 +394,16 @@ export function LandingPage() {
             <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
               <h3 className="text-2xl font-bold mb-6 text-white">Send us a message</h3>
 
-              {isSubmitted ? (
-                <div className="text-center py-8">
-                  <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-4" />
+                    <div className="lg:w-1/3 relative flex justify-center items-center p-4">
                   <h4 className="text-xl font-semibold text-green-400 mb-2">Thank you for your message!</h4>
-                  <p className="text-gray-300">We'll get back to you as soon as possible.</p>
+                        className="aspect-[9/16] w-full max-w-xs relative"
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
+                          className="w-full h-full object-cover rounded-lg border border-gray-600"
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                       Name
-                    </label>
+                          poster={category.thumbnailLarge}
                     <input
                       type="text"
                       id="name"
@@ -441,60 +424,34 @@ export function LandingPage() {
                       onChange={handleChange}
                       className="w-full rounded-md border border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                    className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all"
+                    <div className="relative h-40">
+                    <div className="w-full aspect-video">
                       Message
                     </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full rounded-md border border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      required
-                    />
-                  </div>
-                  <Button type="submit" disabled={isSubmitting} className="w-full">
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                        className="w-full h-full object-cover border-b border-gray-600"
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                   </Button>
-                </form>
+                        poster={category.thumbnailLarge}
               )}
-            </div>
+                          className="p-3 bg-black/50 hover:bg-black/70 rounded-full transition duration-300"
 
             <div className="space-y-8">
-              <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
-                <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center">
+                    <div className="p-6">
                     <Mail className="h-5 w-5 text-blue-400 mr-3" />
-                    <span className="text-gray-300">contact@novanexus.ai</span>
-                  </div>
-                  <div className="flex items-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#22c55e" xmlns="http://www.w3.org/2000/svg">
+                        <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                     <Phone className="h-5 w-5 text-blue-400 mr-3" />
-                    <span className="text-gray-300">+64 02XXXXXXXX</span>
                   </div>
-                  <div className="flex items-center">
-                    <MapPin className="h-5 w-5 text-blue-400 mr-3" />
-                    <span className="text-gray-300">New Zealand</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
-                <h3 className="text-xl font-bold mb-4 text-white">Why Choose NovaNexus?</h3>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Local New Zealand team with personal support</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Practical AI solutions tailored for your business</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <div className="flex flex-wrap gap-2 mb-6">
+                      <h4 className="text-xl font-semibold text-white mb-3">{category.title}</h4>
+                      <p className="text-gray-300 mb-4">{category.description}</p>
+                    <div className="p-4">
+                      <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
+                      <p className="text-gray-300 text-sm mb-3">{category.description}</p>
+                      <div className="flex flex-wrap gap-1">
+                            className="px-2 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs"
+                          <span key={i} className="px-2 py-1 bg-green-500/20 text-green-300 rounded-full text-xs">
                     <span>Community-first approach with fair pricing</span>
                   </li>
                   <li className="flex items-start">
