@@ -397,32 +397,30 @@ export function LandingPage() {
                 }
               ].map((category, index) => (
                 <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-purple-500 transition-colors">
-                  <div className="p-4">
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                      <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
-                        <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
-                        {category.description}
-                        <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
-                      </p>
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {category.examples.map((example, i) => (
-                          <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
-                            {example}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="aspect-video">
-                        <video
-                          src={category.video}
-                          className="w-full h-full object-cover rounded-lg border border-gray-600"
-                          controls
-                          preload="metadata"
-                          poster={category.thumbnail}
-                        >
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
+                    <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
+                      <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                      {category.description}
+                      <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                    </p>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {category.examples.map((example, i) => (
+                        <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="aspect-video">
+                      <video
+                        src={category.video}
+                        className="w-full h-full object-cover rounded-lg border border-gray-600"
+                        controls
+                        preload="metadata"
+                        poster={category.thumbnail}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                   </div>
                 </div>
@@ -550,22 +548,22 @@ export function LandingPage() {
 
               {/* Marketing Communications - Landscape Video */}
               <div className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-orange-500/50 transition-colors">
-                <div className="p-6">
-                  <h4 className="text-xl font-semibold text-white mb-3">Marketing and Communications</h4>
-                  <p className="text-gray-300 mb-4 relative pl-8 pr-8">
-                    <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
-                    Small switch, big eco win — these KiwiGreen bags crushed my avocado test and ditched the plastic!
-                    <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {['Business Reports', 'Company Updates', 'User-Generated Content ads'].map((example, i) => (
-                      <span key={i} className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">
-                        {example}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex justify-center p-4">
-                    <div className="aspect-[9/16] w-48 relative">
+                <div className="p-4">
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-white mb-2">Marketing Communications</h3>
+                    <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
+                      <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                      Small switch, big eco win — these KiwiGreen bags crushed my avocado test and ditched the plastic!
+                      <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {['Business Reports', 'Company Updates', 'User-Generated Content ads'].map((example, i) => (
+                        <span key={i} className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="w-full aspect-[16/9] max-h-64">
                       <video
                         src={`${config.baseUri.textToVideoBucket}/market.mp4`}
                         className="w-full h-full object-cover rounded-lg border border-gray-600"
@@ -701,7 +699,7 @@ export function LandingPage() {
 
                 <div className="mt-4">
                   <h5 className="font-semibold text-white mb-3">Key Phrases & Topics</h5>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1 mb-3">
                     <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">AI feature (+)</span>
                     <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">intuitive (+)</span>
                     <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">response time (+)</span>
@@ -717,6 +715,7 @@ export function LandingPage() {
           {/* Additional Services */}
           <div className="mb-20">
             <div className="flex items-center mb-8">
+              <Zap className="h-8 w-8 text-cyan-400 mr-3" />
               <h3 className="text-3xl font-bold text-white">🤖 Custom Chatbots & More</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
