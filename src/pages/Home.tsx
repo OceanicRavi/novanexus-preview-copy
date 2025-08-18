@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowRight, Bot, Video, Mic, BarChart3, FileText, MessageSquare, Upload, Download, Play, Pause, Volume2 } from 'lucide-react';
 import { Button } from '../components/Button';
 import Chatbot from '../components/Chatbot';
+import axios from 'axios';
 import { config } from '../config';
 
 export function Home() {
@@ -35,11 +36,11 @@ export function Home() {
     setIsSubmitting(true);
 
     try {
+      // Using a simple fetch to send email via Resend API
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${config.resend.apiKey}`,
         },
         body: JSON.stringify({
           name: contactForm.name,
