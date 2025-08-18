@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowRight, Bot, Video, Mic, BarChart3, MessageSquare, FileText, Zap, Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
+import { ArrowRight, Bot, Video, Mic, BarChart3, MessageSquare, FileText, Zap, Mail, Phone, MapPin, CheckCircle, Radio, Map, Hourglass } from 'lucide-react';
 import { Button } from '../components/Button';
+import { config } from '../config';
 
 export function LandingPage() {
   const [formData, setFormData] = useState({
