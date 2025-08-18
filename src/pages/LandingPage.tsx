@@ -397,30 +397,32 @@ export function LandingPage() {
                 }
               ].map((category, index) => (
                 <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-purple-500 transition-colors">
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                    <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
-                      <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
-                      {category.description}
-                      <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {category.examples.map((example, i) => (
-                        <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
-                          {example}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="aspect-video">
-                      <video
-                        src={category.video}
-                        className="w-full h-full object-cover rounded-lg border border-gray-600"
-                        controls
-                        preload="metadata"
-                        poster={category.thumbnail}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
+                  <div className="p-4">
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
+                      <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
+                        <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                        {category.description}
+                        <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                      </p>
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {category.examples.map((example, i) => (
+                          <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                            {example}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="aspect-video">
+                        <video
+                          src={category.video}
+                          className="w-full h-full object-cover rounded-lg border border-gray-600"
+                          controls
+                          preload="metadata"
+                          poster={category.thumbnail}
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -519,7 +521,7 @@ export function LandingPage() {
                     <h4 className="text-xl font-semibold text-white mb-3">News Broadcasting</h4>
                     <p className="text-gray-300 mb-4 relative pl-8 pr-8">
                       <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
-                      Taranaki Maunga becomes a legal person as treaty settlement passes into law.
+                      Create professional news broadcasts with AI anchors delivering breaking news, weather updates, and sports highlights. Perfect for media companies, corporate communications, and content creators looking to produce consistent, high-quality news content.
                       <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -548,22 +550,24 @@ export function LandingPage() {
 
               {/* Marketing Communications - Landscape Video */}
               <div className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-orange-500/50 transition-colors">
-                <div className="p-4">
-                  <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-white mb-2">Marketing Communications</h3>
-                    <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
+                <div className="flex flex-col lg:flex-row">
+                  <div className="p-6 lg:w-2/3">
+                    <h4 className="text-xl font-semibold text-white mb-3">Marketing Communications</h4>
+                    <p className="text-gray-300 mb-4 relative pl-8 pr-8">
                       <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
                       Small switch, big eco win — these KiwiGreen bags crushed my avocado test and ditched the plastic!
                       <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2">
                       {['Business Reports', 'Company Updates', 'User-Generated Content ads'].map((example, i) => (
-                        <span key={i} className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">
+                        <span key={i} className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm">
                           {example}
                         </span>
                       ))}
                     </div>
-                    <div className="w-full aspect-[16/9] max-h-64">
+                  </div>
+                  <div className="lg:w-1/3 p-4 flex justify-center items-center">
+                    <div className="aspect-video w-full">
                       <video
                         src={`${config.baseUri.textToVideoBucket}/market.mp4`}
                         className="w-full h-full object-cover rounded-lg border border-gray-600"
@@ -873,17 +877,17 @@ export function LandingPage() {
             </div>
 
             <div className="space-y-8">
-              <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
+              <div>
                 <div className="flex items-center mb-4">
                   <Mail className="h-5 w-5 text-blue-400 mr-3" />
                   <span className="text-white">contact@novanexus.ai</span>
                 </div>
                 <div className="flex items-center mb-4">
-                  <Phone className="h-5 w-5 text-blue-400 mr-3" />
+                  <Phone className="h-5 w-5 text-green-400 mr-3" />
                   <span className="text-white">+64 21 123 4567</span>
                 </div>
                 <div className="flex items-center">
-                  <MapPin className="h-5 w-5 text-blue-400 mr-3" />
+                  <MapPin className="h-5 w-5 text-red-400 mr-3" />
                   <span className="text-white">Auckland, New Zealand</span>
                 </div>
               </div>
@@ -893,11 +897,11 @@ export function LandingPage() {
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-300">Local New Zealand expertise with global AI capabilities</span>
+                    <span className="text-gray-300">Local New Zealand team with deep AI expertise</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-300">Community-first approach with fair pricing</span>
+                    <span className="text-gray-300">Custom solutions tailored to your business needs</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
