@@ -9,7 +9,7 @@ import { Services } from './pages/Services';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-background flex flex-col">
+      <div className="min-h-screen bg-gray-900 flex flex-col">
         <Navbar />
         <main className="flex-grow pt-16">
           <Routes>

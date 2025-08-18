@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-primary-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -19,10 +19,10 @@ export function Navbar() {
             </Link>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-primary-900 hover:text-primary-600 font-medium">Home</Link>
-            <Link to="/services" className="text-primary-900 hover:text-primary-600 font-medium">Services</Link>
-            <Link to="/about" className="text-primary-900 hover:text-primary-600 font-medium">About</Link>
-            <Link to="/contact" className="text-primary-900 hover:text-primary-600 font-medium">Contact</Link>
+            <Link to="/" className="text-white hover:text-gray-300 font-medium">Home</Link>
+            <Link to="/services" className="text-white hover:text-gray-300 font-medium">Services</Link>
+            <Link to="/about" className="text-white hover:text-gray-300 font-medium">About</Link>
+            <Link to="/contact" className="text-white hover:text-gray-300 font-medium">Contact</Link>
           </div>
         </div>
       </div>

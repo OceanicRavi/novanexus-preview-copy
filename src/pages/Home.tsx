@@ -4,14 +4,14 @@ import { Button } from '../components/Button';
 
 export function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gray-900">
       {/* Dynamic gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-600 via-secondary-400 to-primary-800 opacity-90">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-gray-900">
         <div className="absolute inset-0" style={{
           background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
           animation: 'pulse 8s infinite'
         }}></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80')] bg-cover bg-center mix-blend-overlay opacity-10"></div>
       </div>
 
       <div className="relative z-10">
@@ -29,13 +29,13 @@ export function Home() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/services">
-                  <Button size="lg" className="bg-primary-600 text-white hover:bg-primary-700 group">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 group">
                     Get started
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button size="lg" className="bg-primary-600 text-white hover:bg-primary-700">
+                  <Button size="lg" variant="outline">
                     Contact us
                   </Button>
                 </Link>
@@ -78,7 +78,7 @@ export function Home() {
                   <Link
                     key={index}
                     to={`/services?tab=${feature.tab}`}
-                    className="group relative bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1"
+                    className="group relative bg-gray-800/30 backdrop-blur-lg rounded-xl overflow-hidden hover:bg-gray-800/50 transition-all duration-300 transform hover:-translate-y-1 border border-gray-700"
                     style={{
                       animation: `fadeInUp 0.5s ease-out forwards ${feature.delay}ms`
                     }}
@@ -93,7 +93,7 @@ export function Home() {
                         <div className="absolute bottom-0 left-0 p-4">
                           <h3 className="text-lg font-semibold text-white mb-1">{feature.title}</h3>
                           <p className="text-sm text-white/80">{feature.description}</p>
-                          <span className="inline-flex items-center text-secondary-200 mt-2 text-sm font-medium">
+                          <span className="inline-flex items-center text-blue-400 mt-2 text-sm font-medium">
                             Explore more
                             <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </span>
@@ -108,7 +108,7 @@ export function Home() {
         </div>
 
         {/* Features section */}
-        <div className="bg-white/5 backdrop-blur-lg py-24">
+        <div className="bg-gray-800/50 backdrop-blur-lg py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">Comprehensive AI Solutions</h2>
@@ -139,7 +139,7 @@ export function Home() {
                 <Link
                   key={index}
                   to={`/services?tab=${feature.tab}`}
-                  className="group relative bg-white/10 rounded-xl overflow-hidden hover:bg-white/20 transition-all duration-300"
+                  className="group relative bg-gray-800/30 rounded-xl overflow-hidden hover:bg-gray-800/50 transition-all duration-300 border border-gray-700"
                 >
                   <div className="aspect-video relative">
                     <img
@@ -151,7 +151,7 @@ export function Home() {
                       <div className="absolute bottom-0 left-0 p-6">
                         <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
                         <p className="text-sm text-white/80">{feature.description}</p>
-                        <span className="inline-flex items-center text-secondary-200 mt-4 text-sm font-medium">
+                        <span className="inline-flex items-center text-blue-400 mt-4 text-sm font-medium">
                           Learn more
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </span>
