@@ -294,65 +294,8 @@ export function LandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">AI Solutions & Examples</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Discover how our AI solutions can transform your business operations with real-world examples and demonstrations.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all">
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className={`p-3 rounded-lg bg-gradient-to-r ${service.color} mr-4`}>
-                      {service.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-                      <p className="text-gray-300">{service.description}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {service.examples.map((example, exampleIndex) => (
-                      <div key={exampleIndex} className="bg-gray-700/30 rounded-lg p-4 border border-gray-600">
-                        <h4 className="text-lg font-semibold text-white mb-2">{example.title}</h4>
-                        <p className="text-gray-300 text-sm mb-3">{example.description}</p>
-                        <div className="bg-gray-800/50 rounded p-3 text-sm text-gray-300 font-mono whitespace-pre-line">
-                          {example.example}
-                        </div>
-                        {example.videoUrl && (
-                          <div className="mt-4">
-                            <video 
-                              controls 
-                              className="w-full rounded-lg"
-                              poster="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=400"
-                            >
-                              <source src={example.videoUrl} type="video/mp4" />
-                              Your browser does not support the video tag.
-                            </video>
-                          </div>
-                        )}
-                        {example.audioUrl && (
-                          <div className="mt-4">
-                            <audio 
-                              controls 
-                              className="w-full"
-                            >
-                              <source src={example.audioUrl} type="audio/mpeg" />
-                              Your browser does not support the audio tag.
-                            </audio>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="space-y-8 mt-12">
-            <p className="text-gray-300 text-center">These are purely created by AI.</p>
+               Discover our comprehensive AI solutions with real examples and live demonstrations.
+             </p>
           </div>
         </div>
       </section>
@@ -392,34 +335,10 @@ export function LandingPage() {
               <div className="bg-gray-800/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-700">
                 <MessageSquare className="h-8 w-8 text-green-400" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Our Values</h3>
+              <h3 className="text-xl font-semibold mb-2 text-white">Our Commitment</h3>
               <p className="text-gray-400">
-                Transparency, reliability, and genuine care for our clients' success. We believe in building lasting partnerships, not just transactions.
+                Personal support, practical solutions, and community-first approach to help you succeed with AI technology.
               </p>
-            </div>
-          </div>
-
-          <div className="mt-16">
-            <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
-              <h3 className="text-2xl font-bold mb-6 text-white text-center">Why Choose NovaNexus?</h3>
-              <ul className="space-y-4 max-w-2xl mx-auto">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Local New Zealand team with deep understanding of Kiwi business needs</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Proven track record in delivering practical AI solutions</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Community-first approach with fair pricing</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300">Ongoing support and training included</span>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
@@ -431,7 +350,7 @@ export function LandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Get Started Today</h2>
             <p className="text-xl text-gray-300">
-              Ready to transform your business with AI? Let's discuss how we can help you achieve your goals.
+              Ready to transform your business with AI? Get in touch and let's discuss your needs.
             </p>
           </div>
 
@@ -443,7 +362,7 @@ export function LandingPage() {
                 <div className="text-center py-8">
                   <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-4" />
                   <h4 className="text-xl font-semibold text-green-400 mb-2">Thank you for your message!</h4>
-                  <p className="text-gray-300">We'll get back to you within 24 hours.</p>
+                  <p className="text-gray-300">We'll get back to you as soon as possible.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -486,11 +405,7 @@ export function LandingPage() {
                       required
                     />
                   </div>
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
-                  >
+                  <Button type="submit" disabled={isSubmitting} className="w-full">
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
@@ -498,17 +413,37 @@ export function LandingPage() {
             </div>
 
             <div className="space-y-8">
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-blue-400 mr-3" />
-                <span className="text-gray-300">hello@novanexus.co.nz</span>
+              <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
+                <div className="flex items-center mb-4">
+                  <Mail className="h-5 w-5 text-blue-400 mr-3" />
+                  <span className="text-white">contact@novanexus.ai</span>
+                </div>
+                <div className="flex items-center mb-4">
+                  <Phone className="h-5 w-5 text-blue-400 mr-3" />
+                  <span className="text-white">+64 21 123 4567</span>
+                </div>
+                <div className="flex items-center">
+                  <MapPin className="h-5 w-5 text-blue-400 mr-3" />
+                  <span className="text-white">Auckland, New Zealand</span>
+                </div>
               </div>
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-blue-400 mr-3" />
-                <span className="text-gray-300">+64 21 123 4567</span>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="h-5 w-5 text-blue-400 mr-3" />
-                <span className="text-gray-300">Auckland, New Zealand</span>
+
+              <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
+                <h3 className="text-xl font-semibold text-white mb-4">Why Choose NovaNexus?</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">Local New Zealand expertise with global AI capabilities</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">Community-first approach with fair pricing</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">Ongoing support and training included</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -544,3 +479,5 @@ export function LandingPage() {
     </div>
   );
 }
+
+export { LandingPage }
