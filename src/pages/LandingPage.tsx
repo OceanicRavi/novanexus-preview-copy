@@ -357,8 +357,8 @@ export function LandingPage() {
             <div className="flex items-center mb-8">
               <Video className="h-8 w-8 text-purple-400 mr-3" />
               <h3 className="text-3xl font-bold text-white">🎥 Text-to-Video Examples</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {[
                 {
                   title: 'Event Showcase',
@@ -395,32 +395,34 @@ export function LandingPage() {
                   thumbnail: `${config.baseUri.textToVideoBucket}/behkibatein_thumbnail.png`,
                   examples: ['Podcast', 'Storytelling', 'Customer Stories', 'Lyric videos']
                 }
-              <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-purple-500 transition-colors">
-                <div className="p-4">
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                    <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
-                      <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
-                      {category.description}
-                      <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
-                    </p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {category.examples.map((example, i) => (
-                        <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
-                          {example}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="aspect-video">
-                      <video
-                        src={category.video}
-                        className="w-full h-full object-cover rounded-lg border border-gray-600"
-                        controls
-                        preload="metadata"
-                        poster={category.thumbnail}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
+              ].map((category, index) => (
+                <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-purple-500 transition-colors">
+                  <div className="p-4">
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
+                      <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
+                        <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                        {category.description}
+                        <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                      </p>
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {category.examples.map((example, i) => (
+                          <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                            {example}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="aspect-video">
+                        <video
+                          src={category.video}
+                          className="w-full h-full object-cover rounded-lg border border-gray-600"
+                          controls
+                          preload="metadata"
+                          poster={category.thumbnail}
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -519,7 +521,7 @@ export function LandingPage() {
                     <h4 className="text-xl font-semibold text-white mb-3">News Broadcasting</h4>
                     <p className="text-gray-300 mb-4 relative pl-8 pr-8">
                       <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      Taranaki Maunga becomes a legal person as treaty settlement passes into law.
                       <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -528,7 +530,7 @@ export function LandingPage() {
                           {example}
                         </span>
                       ))}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    </div>
                   </div>
                   <div className="lg:w-1/3 p-4 flex justify-center items-center">
                     <div className="aspect-[9/16] w-full max-w-xs">
@@ -541,34 +543,34 @@ export function LandingPage() {
                       >
                         Your browser does not support the video tag.
                       </video>
-                <div className="relative h-40">
+                    </div>
                   </div>
                 </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              </div>
 
               {/* Marketing Communications - Landscape Video */}
-              <div className="p-4">
-                    <div className="p-3">
-                      <h3 className="text-base font-semibold text-white mb-1">{service.title}</h3>
-                      <p className="text-white/80 text-xs">{service.description}</p>
+              <div className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-orange-500/50 transition-colors">
+                <div className="p-6">
+                  <h4 className="text-xl font-semibold text-white mb-3">Marketing and Communications</h4>
+                  <p className="text-gray-300 mb-4 relative pl-8 pr-8">
                     <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
                     Small switch, big eco win — these KiwiGreen bags crushed my avocado test and ditched the plastic!
-                <div className="relative h-40">
-                <div className="p-3 bg-gray-800/50">
-                  <div className="flex flex-wrap gap-1">
+                    <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {['Business Reports', 'Company Updates', 'User-Generated Content ads'].map((example, i) => (
-                      <span key={i} className="px-2 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs">
+                      <span key={i} className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">
                         {example}
                       </span>
-                    <div className="p-3">
-                      <h3 className="text-base font-semibold text-white mb-1">{category.title}</h3>
-                      <p className="text-white/80 text-xs">{category.description}</p>
+                    ))}
+                  </div>
+                  <div className="aspect-video">
                     <video
                       src={`${config.baseUri.textToVideoBucket}/market.mp4`}
                       className="w-full h-full object-cover rounded-lg border border-gray-600"
                       controls
                       preload="metadata"
-                      className="p-3 bg-black/30 hover:bg-black/50 rounded-full transition duration-300"
+                      poster={`${config.baseUri.textToVideoBucket}/market_thumbnail.png`}
                     >
                       Your browser does not support the video tag.
                     </video>
@@ -697,7 +699,7 @@ export function LandingPage() {
 
                 <div className="mt-4">
                   <h5 className="font-semibold text-white mb-3">Key Phrases & Topics</h5>
-                  <div className="flex flex-wrap gap-1 mb-3">
+                  <div className="flex flex-wrap gap-2">
                     <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">AI feature (+)</span>
                     <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">intuitive (+)</span>
                     <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">response time (+)</span>
@@ -713,7 +715,6 @@ export function LandingPage() {
           {/* Additional Services */}
           <div className="mb-20">
             <div className="flex items-center mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <h3 className="text-3xl font-bold text-white">🤖 Custom Chatbots & More</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -730,32 +731,30 @@ export function LandingPage() {
                   description: 'AI-powered content creation and optimization',
                   icon: <FileText className="h-8 w-8" />,
                   color: 'yellow',
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="green" xmlns="http://www.w3.org/2000/svg">
+                  examples: ['Blog Post Writing', 'Product Descriptions', 'Email Campaigns']
                 },
                 {
                   title: 'Workflow Automation',
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="green" xmlns="http://www.w3.org/2000/svg">
+                  description: 'Streamline business processes with AI',
                   icon: <Zap className="h-8 w-8" />,
                   color: 'cyan',
-              <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-blue-500 transition-colors">
-                <div className="relative h-40">
+                  examples: ['Email Processing', 'Data Entry Automation', 'Lead Qualification']
+                }
               ].map((service, index) => (
                 <div key={index} className={`bg-gray-800/30 p-6 rounded-lg border border-gray-700 hover:border-${service.color}-500/50 transition-colors`}>
                   <div className={`text-${service.color}-400 mb-4`}>
-                      <h3 className="text-base font-semibold text-white mb-1">{category.title}</h3>
-                      <p className="text-white/80 text-xs">{category.description}</p>
+                    {service.icon}
+                  </div>
                   <h4 className="text-xl font-semibold text-white mb-3">{service.title}</h4>
-                <div className="p-3 bg-gray-800/50">
-                  <div className="flex flex-wrap gap-1">
-                <div className="p-3 bg-gray-800/50">
-                      <span key={i} className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">
-                        {example}
+                  <p className="text-gray-300 mb-4">{service.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {service.examples.map((example, i) => (
                       <span key={i} className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">{example}</span>
                     ))}
                   </div>
                 </div>
-                <div className="flex justify-center">
-                  <div className="aspect-[9/16] w-48">
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -862,42 +861,42 @@ export function LandingPage() {
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full rounded-md border border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-gray-800/30 rounded-lg border border-gray-700 p-6">
-                <h4 className="font-semibold text-white mb-3 text-sm">Emotional Breakdown</h4>
-                <div className="space-y-3">
+                      required
+                    />
+                  </div>
+                  <Button type="submit" disabled={isSubmitting} className="w-full">
                     {isSubmitting ? 'Sending...' : 'Send Message'}
-              <p className="text-white font-medium text-sm">
+                  </Button>
                 </form>
               )}
             </div>
 
             <div className="space-y-8">
-                      <div className="flex justify-between text-xs mb-1">
+              <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
                 <div className="flex items-center mb-4">
                   <Mail className="h-5 w-5 text-blue-400 mr-3" />
                   <span className="text-white">contact@novanexus.ai</span>
-                      <div className="w-full bg-gray-600 rounded-full h-1.5">
+                </div>
                 <div className="flex items-center mb-4">
-                          className={`bg-${item.color}-500 h-1.5 rounded-full`} 
+                  <Phone className="h-5 w-5 text-blue-400 mr-3" />
                   <span className="text-white">+64 21 123 4567</span>
                 </div>
                 <div className="flex items-center">
-                <h4 className="font-semibold text-white mb-3 text-sm">Sentiment Overview</h4>
-                <div className="space-y-3">
+                  <MapPin className="h-5 w-5 text-blue-400 mr-3" />
+                  <span className="text-white">Auckland, New Zealand</span>
                 </div>
               </div>
 
               <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
                 <h3 className="text-xl font-semibold text-white mb-4">Why Choose NovaNexus?</h3>
-                    <div key={index} className={`bg-${item.color}-50/10 p-2 rounded-lg`}>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className={`font-medium text-${item.color}-400 text-xs`}>{item.sentiment}</span>
-                        <span className={`text-${item.color}-400 text-xs`}>{item.percentage}%</span>
-                  </li>
-                      <div className={`w-full bg-${item.color}-200/20 rounded-full h-1.5`}>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                          className={`bg-${item.color}-500 h-1.5 rounded-full`} 
+                    <span className="text-gray-300">Local New Zealand expertise with global AI capabilities</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-300">Community-first approach with fair pricing</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
@@ -905,19 +904,19 @@ export function LandingPage() {
                   </li>
                 </ul>
               </div>
-              <div className="p-4">
-            <div className="mt-4">
-              <h4 className="font-semibold text-white mb-2 text-sm">Key Phrases & Topics</h4>
-              <div className="flex flex-wrap gap-1">
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-gray-800/50 border-t border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col items-center justify-between md:flex-row">
-                <div className="flex flex-wrap gap-1">
+            <div className="flex items-center space-x-2 mb-4 md:mb-0">
               <img src="/novanexus_logo.png" className="h-8 w-8" alt="Nova Nexus Logo" />
-                    <span key={i} className="px-2 py-1 bg-orange-100 text-orange-700 rounded-full text-xs">
-                  <span key={index} className={`px-2 py-1 bg-${item.color}-100/20 text-${item.color}-300 rounded-full text-xs border border-${item.color}-500/30`}>
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                NovaNexus
               </span>
             </div>
             <div className="text-sm text-gray-300">
