@@ -288,7 +288,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section with Examples */}
       <section id="services" className="py-24 bg-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -296,6 +296,466 @@ export function LandingPage() {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                Discover our comprehensive AI solutions with real examples and live demonstrations.
              </p>
+          </div>
+
+          {/* RAG Agent Examples */}
+          <div className="mb-20">
+            <div className="flex items-center mb-8">
+              <Bot className="h-8 w-8 text-blue-400 mr-3" />
+              <h3 className="text-3xl font-bold text-white">📑 RAG Agent - Document Processing</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: 'Legal Document Analysis',
+                  description: 'Intelligent contract review and legal document processing.',
+                  image: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400',
+                  examples: ['Contract Review', 'Compliance Check', 'Case Analysis'],
+                  docUrl: `${config.baseUri.ragBucket}/policy_guidelines.pdf`
+                },
+                {
+                  title: 'E-commerce Reports',
+                  description: 'Automated analysis of financial documents and reports.',
+                  image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400',
+                  examples: ['Earnings Reports', 'Risk Assessment', 'Market Analysis'],
+                  docUrl: `${config.baseUri.ragBucket}/mcd_nutritions.pdf`
+                },
+                {
+                  title: 'Technical Documentation',
+                  description: 'Process and analyze technical documents and manuals.',
+                  image: 'https://images.unsplash.com/photo-1623479322729-28b25c16b011?auto=format&fit=crop&q=80&w=400',
+                  examples: ['API Documentation', 'User Manuals', 'Technical Specs'],
+                  docUrl: `${config.baseUri.ragBucket}/medical_book.pdf`
+                }
+              ].map((category, index) => (
+                <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-blue-500/50 transition-colors">
+                  <div className="relative h-48">
+                    <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
+                        <p className="text-white/80 text-sm">{category.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex flex-wrap gap-2">
+                      {category.examples.map((example, i) => (
+                        <span key={i} className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Text-to-Video Examples */}
+          <div className="mb-20">
+            <div className="flex items-center mb-8">
+              <Video className="h-8 w-8 text-purple-400 mr-3" />
+              <h3 className="text-3xl font-bold text-white">🎥 Text-to-Video Examples</h3>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {[
+                {
+                  title: 'Event Showcase',
+                  description: 'Capture the vibrant energy of a Holi celebration in Auckland, highlighting the joyful colors, music, and dance. Showcase the cultural fusion of Indian traditions with a global audience, featuring the Mumbai Local food stall serving authentic street food. Use dynamic camera shots, slow-motion color bursts, and upbeat festival music to create an immersive experience.',
+                  video: `${config.baseUri.textToVideoBucket}/mumbailocal.mp4`,
+                  thumbnail: `${config.baseUri.textToVideoBucket}/mumbailocal_thumbnail.png`,
+                  examples: ['Tourism', 'Public awareness', 'Government campaigns', 'Event promotions']
+                },
+                {
+                  title: 'Brand Marketing',
+                  description: `Produce an electrifying promotional video showcasing 1ShotBuilders' cutting-edge solutions. Use high-energy transitions, sharp typography, and animated graphics to highlight brand expertise, testimonials, and real-world success stories. Finish with a compelling call-to-action to boost engagement.`,
+                  video: `${config.baseUri.textToVideoBucket}/1shotBuilders.mp4`,
+                  thumbnail: `${config.baseUri.textToVideoBucket}/1shotbuilders_thumbnail.png`,
+                  examples: ['Product launches', 'Investor pitches', 'Trade shows', 'E-commerce']
+                },
+                {
+                  title: 'Interactive Content',
+                  description: 'Bring the prehistoric era to life with an animated scene featuring dinosaurs in action. Use vibrant colors, engaging movements, and realistic sounds to create an entertaining yet educational experience. Suitable for kids, gaming content, or themed attraction promos.',
+                  video: `${config.baseUri.textToVideoBucket}/dinosaurs.mp4`,
+                  thumbnail: `${config.baseUri.textToVideoBucket}/dinosaur_thumbnail.png`,
+                  examples: ['Kids education', 'How-to Guides', 'VR/AR experiences', 'Trailers & Teasers']
+                },
+                {
+                  title: 'Educational Content',
+                  description: 'Create a visually immersive medical animation highlighting the Palmaris Longus muscle, a little-known forearm structure. Use a mix of 3D anatomical models, overlays, and real-world comparisons to explain its presence, function, and clinical significance. End with applications in surgical tendon grafting and self-diagnosis techniques.',
+                  video: `${config.baseUri.textToVideoBucket}/medical.mp4`,
+                  thumbnail: `${config.baseUri.textToVideoBucket}/medical_thumbnail.png`,
+                  examples: ['Course Modules', 'Medical training', 'Concept Explainers', 'Fitness science', 'Awareness Campaigns']
+                },
+                {
+                  title: 'Personal Branding',
+                  description: 'Craft an engaging podcast visual for an influencer discussing deep and meaningful conversations. Use smooth text animations, dynamic audio waveforms, and a cinematic color palette to enhance storytelling. Perfect for thought leaders, personal branding, and social media engagement.',
+                  video: `${config.baseUri.textToVideoBucket}/behkibatein.mp4`,
+                  thumbnail: `${config.baseUri.textToVideoBucket}/behkibatein_thumbnail.png`,
+                  examples: ['Podcast', 'Storytelling', 'Customer Stories', 'Lyric videos']
+                }
+              ].map((category, index) => (
+                <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-purple-500/50 transition-colors">
+                  <div className="p-6">
+                    <h4 className="text-xl font-semibold text-white mb-3">{category.title}</h4>
+                    <p className="text-gray-300 mb-4 relative pl-8 pr-8">
+                      <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                      {category.description}
+                      <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {category.examples.map((example, i) => (
+                        <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="aspect-video">
+                      <video
+                        src={category.video}
+                        className="w-full h-full object-cover rounded-lg border border-gray-600"
+                        controls
+                        preload="metadata"
+                        poster={category.thumbnail}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AI Voice Examples */}
+          <div className="mb-20">
+            <div className="flex items-center mb-8">
+              <Mic className="h-8 w-8 text-green-400 mr-3" />
+              <h3 className="text-3xl font-bold text-white">📢 AI Voice Examples</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: 'Inbound Call Handling',
+                  description: 'AI-powered customer service and support.',
+                  image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&q=80&w=400',
+                  examples: ['Support Inquiries', 'Appointment Scheduling', 'Product Information'],
+                  audio: `${config.baseUri.aiVoiceBucket}/inbound.mp3`
+                },
+                {
+                  title: 'Multilingual Support',
+                  description: 'Global customer service in multiple languages.',
+                  image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=400',
+                  examples: ['Language Detection', 'Real-time Translation', 'Cultural Adaptation'],
+                  audio: `${config.baseUri.aiVoiceBucket}/multilingual.mp3`
+                },
+                {
+                  title: 'Sound Effects',
+                  description: 'Generate sound effects for your use case',
+                  image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=400',
+                  examples: ['Background Music', 'Relaxation Sounds', 'Generative Music'],
+                  audio: `${config.baseUri.aiVoiceBucket}/jungle_sound.mp3`
+                }
+              ].map((category, index) => (
+                <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-green-500/50 transition-colors">
+                  <div className="relative h-48">
+                    <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                      <div className="p-4">
+                        <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
+                        <p className="text-white/80 text-sm">{category.description}</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <button
+                        onClick={() => {
+                          const audio = document.getElementById(`audio-voice-${index}`) as HTMLAudioElement;
+                          if (audio.paused) {
+                            document.querySelectorAll('audio').forEach(el => el.pause());
+                            audio.play();
+                          } else {
+                            audio.pause();
+                          }
+                        }}
+                        className="p-4 bg-black/30 hover:bg-black/50 rounded-full transition duration-300"
+                      >
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="orange" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </button>
+                      <audio id={`audio-voice-${index}`} className="hidden">
+                        <source src={category.audio} type="audio/mp3" />
+                        Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex flex-wrap gap-2">
+                      {category.examples.map((example, i) => (
+                        <span key={i} className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AI Anchor Examples */}
+          <div className="mb-20">
+            <div className="flex items-center mb-8">
+              <Radio className="h-8 w-8 text-orange-400 mr-3" />
+              <h3 className="text-3xl font-bold text-white">🤖 AI Anchor Examples</h3>
+            </div>
+            <p className="text-gray-300 mb-6">These are purely created by AI.</p>
+            <div className="space-y-8">
+              {/* News Broadcasting - Portrait Video */}
+              <div className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-orange-500/50 transition-colors">
+                <div className="flex flex-col lg:flex-row">
+                  <div className="p-6 lg:w-2/3">
+                    <h4 className="text-xl font-semibold text-white mb-3">News Broadcasting</h4>
+                    <p className="text-gray-300 mb-4 relative pl-8 pr-8">
+                      <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                      Taranaki Maunga becomes a legal person as treaty settlement passes into law.
+                      <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {['Breaking News', 'Weather Reports', 'Sports Updates', 'Viral Clips', 'Brand Yourself'].map((example, i) => (
+                        <span key={i} className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="lg:w-1/3 p-4 flex justify-center items-center">
+                    <div className="aspect-[9/16] w-full max-w-xs">
+                      <video
+                        src={`${config.baseUri.textToVideoBucket}/anchor.mp4`}
+                        className="w-full h-full object-cover rounded-lg border border-gray-600"
+                        controls
+                        preload="metadata"
+                        poster={`${config.baseUri.textToVideoBucket}/anchor_thumbnail.png`}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Marketing Communications - Landscape Video */}
+              <div className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-orange-500/50 transition-colors">
+                <div className="p-6">
+                  <h4 className="text-xl font-semibold text-white mb-3">Marketing and Communications</h4>
+                  <p className="text-gray-300 mb-4 relative pl-8 pr-8">
+                    <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                    Small switch, big eco win — these KiwiGreen bags crushed my avocado test and ditched the plastic!
+                    <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {['Business Reports', 'Company Updates', 'User-Generated Content ads'].map((example, i) => (
+                      <span key={i} className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">
+                        {example}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="aspect-video">
+                    <video
+                      src={`${config.baseUri.textToVideoBucket}/market.mp4`}
+                      className="w-full h-full object-cover rounded-lg border border-gray-600"
+                      controls
+                      preload="metadata"
+                      poster={`${config.baseUri.textToVideoBucket}/market_thumbnail.png`}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sentiment Analysis Examples */}
+          <div className="mb-20">
+            <div className="flex items-center mb-8">
+              <BarChart3 className="h-8 w-8 text-red-400 mr-3" />
+              <h3 className="text-3xl font-bold text-white">📊 Sentiment Analysis Examples</h3>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                {[
+                  {
+                    title: 'Social Media Impact',
+                    description: 'Comprehensive analysis of social media engagement.',
+                    examples: ['Brand Perception', 'Campaign Performance', 'Audience Sentiment']
+                  },
+                  {
+                    title: 'Customer Experience',
+                    description: 'Deep dive into customer feedback and interactions.',
+                    examples: ['Support Quality', 'Product Satisfaction', 'Service Rating']
+                  },
+                  {
+                    title: 'Market Intelligence',
+                    description: 'Competitive analysis and market sentiment tracking.',
+                    examples: ['Industry Trends', 'Competitor Analysis', 'Market Position']
+                  }
+                ].map((category, index) => (
+                  <div key={index} className="bg-gray-800/30 p-6 rounded-lg border border-gray-700 hover:border-red-500/50 transition-colors">
+                    <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
+                    <p className="text-gray-300 mb-4">{category.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {category.examples.map((example, i) => (
+                        <span key={i} className="px-3 py-1 bg-red-500/20 text-red-300 rounded-full text-sm">
+                          {example}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Live Demo */}
+              <div className="bg-gray-800/30 p-6 rounded-lg border border-gray-700">
+                <h4 className="text-xl font-bold text-white mb-4">Live Sentiment Analysis Demo</h4>
+                <div className="bg-gray-700/50 p-4 rounded-lg mb-4">
+                  <p className="text-gray-300 mb-2">Sample Social Media Post:</p>
+                  <p className="text-white font-medium">
+                    "Just tried the new AI feature update - absolutely love how intuitive it is! The response time is incredible, though it took me a moment to get used to the new interface. A bit frustrated with the pricing change, but the value is definitely there. Can't wait to see what's next! 🚀"
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <h5 className="font-semibold text-white mb-3">Emotional Breakdown</h5>
+                    <div className="space-y-3">
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-gray-300">Joy</span>
+                          <span className="text-gray-300">45%</span>
+                        </div>
+                        <div className="w-full bg-purple-900/50 rounded-full h-2">
+                          <div className="bg-purple-500 h-2 rounded-full" style={{ width: '45%' }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-gray-300">Excitement</span>
+                          <span className="text-gray-300">30%</span>
+                        </div>
+                        <div className="w-full bg-blue-900/50 rounded-full h-2">
+                          <div className="bg-blue-500 h-2 rounded-full" style={{ width: '30%' }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-gray-300">Frustration</span>
+                          <span className="text-gray-300">15%</span>
+                        </div>
+                        <div className="w-full bg-red-900/50 rounded-full h-2">
+                          <div className="bg-red-500 h-2 rounded-full" style={{ width: '15%' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h5 className="font-semibold text-white mb-3">Sentiment Overview</h5>
+                    <div className="space-y-3">
+                      <div className="bg-green-900/30 p-3 rounded-lg">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium text-green-300">Positive</span>
+                          <span className="text-green-300">75%</span>
+                        </div>
+                        <div className="w-full bg-green-900/50 rounded-full h-2">
+                          <div className="bg-green-500 h-2 rounded-full" style={{ width: '75%' }}></div>
+                        </div>
+                      </div>
+                      <div className="bg-red-900/30 p-3 rounded-lg">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium text-red-300">Negative</span>
+                          <span className="text-red-300">15%</span>
+                        </div>
+                        <div className="w-full bg-red-900/50 rounded-full h-2">
+                          <div className="bg-red-500 h-2 rounded-full" style={{ width: '15%' }}></div>
+                        </div>
+                      </div>
+                      <div className="bg-gray-700/50 p-3 rounded-lg">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium text-gray-300">Neutral</span>
+                          <span className="text-gray-300">10%</span>
+                        </div>
+                        <div className="w-full bg-gray-600/50 rounded-full h-2">
+                          <div className="bg-gray-500 h-2 rounded-full" style={{ width: '10%' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <h5 className="font-semibold text-white mb-3">Key Phrases & Topics</h5>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">AI feature (+)</span>
+                    <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">intuitive (+)</span>
+                    <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">response time (+)</span>
+                    <span className="px-3 py-1 bg-red-500/20 text-red-300 rounded-full text-sm">pricing change (-)</span>
+                    <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">new interface (n)</span>
+                    <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">#TechInnovation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Services */}
+          <div className="mb-20">
+            <div className="flex items-center mb-8">
+              <MessageSquare className="h-8 w-8 text-indigo-400 mr-3" />
+              <h3 className="text-3xl font-bold text-white">🤖 Custom Chatbots & More</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: 'Custom Chatbots',
+                  description: 'Intelligent conversational AI for your business',
+                  icon: <MessageSquare className="h-8 w-8" />,
+                  color: 'indigo',
+                  examples: ['Customer Support Bot', 'Sales Assistant', 'FAQ Bot']
+                },
+                {
+                  title: 'Content Generation',
+                  description: 'AI-powered content creation and optimization',
+                  icon: <FileText className="h-8 w-8" />,
+                  color: 'yellow',
+                  examples: ['Blog Post Writing', 'Product Descriptions', 'Email Campaigns']
+                },
+                {
+                  title: 'Workflow Automation',
+                  description: 'Streamline business processes with AI',
+                  icon: <Zap className="h-8 w-8" />,
+                  color: 'cyan',
+                  examples: ['Email Processing', 'Data Entry Automation', 'Lead Qualification']
+                }
+              ].map((service, index) => (
+                <div key={index} className={`bg-gray-800/30 p-6 rounded-lg border border-gray-700 hover:border-${service.color}-500/50 transition-colors`}>
+                  <div className={`text-${service.color}-400 mb-4`}>
+                    {service.icon}
+                  </div>
+                  <h4 className="text-xl font-semibold text-white mb-3">{service.title}</h4>
+                  <p className="text-gray-300 mb-4">{service.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {service.examples.map((example, i) => (
+                      <span key={i} className={`px-3 py-1 bg-${service.color}-500/20 text-${service.color}-300 rounded-full text-sm`}>
+                        {example}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
