@@ -294,50 +294,82 @@ export function LandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">AI Solutions & Examples</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                  <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all">
-                    <div className="relative h-40">
+              Discover how our AI services can transform your business operations with real-world examples and demonstrations.
+            </p>
           </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    </div>
-                    <div className="p-4">
-                      <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
-                        href={category.docUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm"
-                      >
-                        View Sample Document →
-                      </a>
-                      {example.videoUrl && (
-                        <div className="mt-4">
-                          <video 
-                            controls 
-                            className="w-full rounded-lg"
-                            poster="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=400"
-                          >
-                            <source src={example.videoUrl} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
-                        </div>
-                      )}
-                      {example.audioUrl && (
-                        <div className="mt-4">
-                          <audio 
-                            controls 
-                            className="w-full"
-                          >
-                            <source src={example.audioUrl} type="audio/mpeg" />
-                            Your browser does not support the audio tag.
-                          </audio>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+
+          <div className="space-y-16">
+            {services.map((service, serviceIndex) => (
+              <div key={service.id} className="relative">
+                <div className="flex items-center mb-8">
+                  <div className={`bg-gradient-to-r ${service.color} p-3 rounded-lg mr-4`}>
+                    {service.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-bold text-white">{service.title}</h3>
+                    <p className="text-lg text-gray-300">{service.description}</p>
+                  </div>
                 </div>
+
+                {service.id === 'chatbot' ? (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {service.examples.map((category, index) => (
+                      <div key={index} className="bg-gray-800/30 p-6 rounded-lg border border-gray-700 hover:bg-gray-800/50 transition-colors">
+                        <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
+                        <p className="text-gray-300 mb-4">{category.description}</p>
+                        <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-600">
+                          <pre className="text-xs text-gray-300 whitespace-pre-wrap font-mono">{category.example}</pre>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {service.examples.map((example, index) => (
+                      <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all">
+                        <div className="relative h-40">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                        </div>
+                        <div className="p-4">
+                          <h4 className="text-lg font-semibold text-white mb-2">{example.title}</h4>
+                          <p className="text-gray-300 text-sm mb-3">{example.description}</p>
+                          {example.videoUrl && (
+                            <div className="mt-4">
+                              <video 
+                                controls 
+                                className="w-full rounded-lg"
+                                poster="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=400"
+                              >
+                                <source src={example.videoUrl} type="video/mp4" />
+                                Your browser does not support the video tag.
+                              </video>
+                            </div>
+                          )}
+                          {example.audioUrl && (
+                            <div className="mt-4">
+                              <audio 
+                                controls 
+                                className="w-full"
+                              >
+                                <source src={example.audioUrl} type="audio/mpeg" />
+                                Your browser does not support the audio tag.
+                              </audio>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
-              <div className="space-y-8">
-                <p className="text-gray-300 text-center">These are purely created by AI.</p>
+          </div>
+
+          <div className="text-center mt-16">
+            <p className="text-gray-300">These examples are purely created by AI to demonstrate our capabilities.</p>
+          </div>
+        </div>
+      </section>
 
       {/* About Section */}
       <section id="about" className="py-24 bg-gray-900">
@@ -374,19 +406,52 @@ export function LandingPage() {
               <div className="bg-gray-800/50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-700">
                 <MessageSquare className="h-8 w-8 text-green-400" />
               </div>
-                    className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all flex flex-col lg:flex-row"
+              <h3 className="text-xl font-semibold mb-2 text-white">Our Values</h3>
               <p className="text-gray-400">
-                    <div className="p-6 flex flex-col justify-between lg:w-2/3">
+                Transparency, reliability, and genuine care for our clients' success. We believe in building lasting partnerships, not just transactions.
+              </p>
             </div>
-                        <h4 className="text-xl font-semibold text-white mb-3">{category.title}</h4>
-                        <p className="text-gray-300 mb-4">
+          </div>
 
+          <div className="mt-16 bg-gray-800/30 rounded-lg p-8 border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">Why Choose NovaNexus?</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Local New Zealand team with deep understanding of Kiwi business needs</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Proven track record in enterprise AI implementations</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Custom solutions tailored to your specific industry and requirements</span>
+                </li>
+              </ul>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Community-first approach with fair pricing</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-300">Ongoing support and training included</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
       <section id="contact" className="py-24 bg-gray-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">Get Started Today</h2>
             <p className="text-xl text-gray-300">
-                              className="px-2 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs"
+              Ready to transform your business with AI? Let's discuss your needs and create a custom solution.
             </p>
           </div>
 
@@ -394,16 +459,18 @@ export function LandingPage() {
             <div className="bg-gray-800/30 rounded-lg p-8 border border-gray-700">
               <h3 className="text-2xl font-bold mb-6 text-white">Send us a message</h3>
 
-                    <div className="lg:w-1/3 relative flex justify-center items-center p-4">
+              {isSubmitted ? (
+                <div className="text-center py-8">
+                  <CheckCircle className="h-16 w-16 text-green-400 mx-auto mb-4" />
                   <h4 className="text-xl font-semibold text-green-400 mb-2">Thank you for your message!</h4>
-                        className="aspect-[9/16] w-full max-w-xs relative"
+                  <p className="text-gray-300">We'll get back to you within 24 hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                          className="w-full h-full object-cover rounded-lg border border-gray-600"
+                  <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                       Name
-                          poster={category.thumbnailLarge}
+                    </label>
                     <input
                       type="text"
                       id="name"
@@ -424,41 +491,58 @@ export function LandingPage() {
                       onChange={handleChange}
                       className="w-full rounded-md border border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       required
-                    className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:bg-gray-800/50 transition-all"
-                    <div className="relative h-40">
-                    <div className="w-full aspect-video">
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
                       Message
                     </label>
-                        className="w-full h-full object-cover border-b border-gray-600"
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <textarea
+                      id="message"
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full rounded-md border border-gray-600 bg-gray-700/50 text-white placeholder-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+                  <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700">
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
-                        poster={category.thumbnailLarge}
+                </form>
               )}
-                          className="p-3 bg-black/50 hover:bg-black/70 rounded-full transition duration-300"
+            </div>
 
             <div className="space-y-8">
-                    <div className="p-6">
-                    <Mail className="h-5 w-5 text-blue-400 mr-3" />
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#22c55e" xmlns="http://www.w3.org/2000/svg">
-                        <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-                    <Phone className="h-5 w-5 text-blue-400 mr-3" />
+              <div className="flex items-center">
+                <Mail className="h-5 w-5 text-blue-400 mr-3" />
+                <span className="text-gray-300">{config.contact.email}</span>
+              </div>
+              <div className="flex items-center">
+                <Phone className="h-5 w-5 text-blue-400 mr-3" />
+                <span className="text-gray-300">{config.contact.phone}</span>
+              </div>
+              <div className="flex items-center">
+                <MapPin className="h-5 w-5 text-blue-400 mr-3" />
+                <span className="text-gray-300">{config.contact.location}</span>
+              </div>
+
+              <div className="bg-gray-800/30 rounded-lg p-6 border border-gray-700">
+                <h4 className="text-lg font-semibold text-white mb-4">What happens next?</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <div className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</div>
+                    <p className="text-gray-300 text-sm">We'll review your requirements and schedule a free consultation call</p>
                   </div>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                      <h4 className="text-xl font-semibold text-white mb-3">{category.title}</h4>
-                      <p className="text-gray-300 mb-4">{category.description}</p>
-                    <div className="p-4">
-                      <h4 className="text-lg font-semibold text-white mb-2">{category.title}</h4>
-                      <p className="text-gray-300 text-sm mb-3">{category.description}</p>
-                      <div className="flex flex-wrap gap-1">
-                            className="px-2 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs"
-                          <span key={i} className="px-2 py-1 bg-green-500/20 text-green-300 rounded-full text-xs">
-                    <span>Community-first approach with fair pricing</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Ongoing support and training included</span>
-                  </li>
-                </ul>
+                  <div className="flex items-start">
+                    <div className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</div>
+                    <p className="text-gray-300 text-sm">We'll create a custom proposal tailored to your specific needs</p>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</div>
+                    <p className="text-gray-300 text-sm">Once approved, we'll begin implementation with full support</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
