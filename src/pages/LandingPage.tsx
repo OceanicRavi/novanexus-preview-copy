@@ -564,16 +564,18 @@ export function LandingPage() {
                       </span>
                     ))}
                   </div>
-                  <div className="aspect-video">
-                    <video
-                      src={`${config.baseUri.textToVideoBucket}/market.mp4`}
-                      className="w-full h-full object-cover rounded-lg border border-gray-600"
-                      controls
-                      preload="metadata"
-                      poster={`${config.baseUri.textToVideoBucket}/market_thumbnail.png`}
-                    >
-                      Your browser does not support the video tag.
-                    </video>
+                  <div className="flex justify-center p-4">
+                    <div className="aspect-[9/16] w-48 relative">
+                      <video
+                        src={`${config.baseUri.textToVideoBucket}/market.mp4`}
+                        className="w-full h-full object-cover rounded-lg border border-gray-600"
+                        controls
+                        preload="metadata"
+                        poster={`${config.baseUri.textToVideoBucket}/market_thumbnail.png`}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   </div>
                 </div>
               </div>
