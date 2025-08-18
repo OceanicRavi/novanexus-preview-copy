@@ -80,17 +80,20 @@ export function LandingPage() {
         {
           title: 'Marketing Videos',
           description: 'Create promotional videos from product descriptions.',
-          example: 'Input: "Introducing our new eco-friendly water bottle made from recycled materials"\nOutput: 30-second video with product showcase, environmental benefits, and call-to-action'
+          example: 'Input: "Introducing our new eco-friendly water bottle made from recycled materials"\nOutput: 30-second video with product showcase, environmental benefits, and call-to-action',
+          videoUrl: 'https://example-bucket.r2.dev/marketing-video-sample.mp4'
         },
         {
           title: 'Educational Content',
           description: 'Turn educational text into visual learning materials.',
-          example: 'Input: "The water cycle consists of evaporation, condensation, and precipitation"\nOutput: Animated video showing water cycle stages with narration and visual effects'
+          example: 'Input: "The water cycle consists of evaporation, condensation, and precipitation"\nOutput: Animated video showing water cycle stages with narration and visual effects',
+          videoUrl: 'https://example-bucket.r2.dev/educational-video-sample.mp4'
         },
         {
           title: 'Social Media Content',
           description: 'Generate engaging social media videos from posts.',
-          example: 'Input: "5 tips for better productivity: 1) Plan your day 2) Take breaks 3) Eliminate distractions"\nOutput: Dynamic video with animated text, icons, and background music'
+          example: 'Input: "5 tips for better productivity: 1) Plan your day 2) Take breaks 3) Eliminate distractions"\nOutput: Dynamic video with animated text, icons, and background music',
+          videoUrl: 'https://example-bucket.r2.dev/social-media-video-sample.mp4'
         }
       ]
     },
@@ -104,17 +107,20 @@ export function LandingPage() {
         {
           title: 'Podcast Generation',
           description: 'Convert articles into natural-sounding podcast episodes.',
-          example: 'Input: Blog post about AI trends\nOutput: 10-minute podcast episode with natural voice, proper pacing, and emphasis on key points'
+          example: 'Input: Blog post about AI trends\nOutput: 10-minute podcast episode with natural voice, proper pacing, and emphasis on key points',
+          audioUrl: 'https://example-bucket.r2.dev/podcast-sample.mp3'
         },
         {
           title: 'Multilingual Narration',
           description: 'Generate voiceovers in multiple languages and accents.',
-          example: 'Input: "Welcome to our company presentation"\nOutput: Professional narration available in English, Spanish, French, German, and more'
+          example: 'Input: "Welcome to our company presentation"\nOutput: Professional narration available in English, Spanish, French, German, and more',
+          audioUrl: 'https://example-bucket.r2.dev/multilingual-sample.mp3'
         },
         {
           title: 'Audiobook Creation',
           description: 'Transform written content into engaging audiobooks.',
-          example: 'Input: Chapter from business book\nOutput: Professional audiobook narration with chapter breaks and consistent voice quality'
+          example: 'Input: Chapter from business book\nOutput: Professional audiobook narration with chapter breaks and consistent voice quality',
+          audioUrl: 'https://example-bucket.r2.dev/audiobook-sample.mp3'
         }
       ]
     },
@@ -312,6 +318,29 @@ export function LandingPage() {
                       <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600">
                         <pre className="text-sm text-gray-300 whitespace-pre-wrap font-mono">{example.example}</pre>
                       </div>
+                      {example.videoUrl && (
+                        <div className="mt-4">
+                          <video 
+                            controls 
+                            className="w-full rounded-lg"
+                            poster="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=400"
+                          >
+                            <source src={example.videoUrl} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      )}
+                      {example.audioUrl && (
+                        <div className="mt-4">
+                          <audio 
+                            controls 
+                            className="w-full"
+                          >
+                            <source src={example.audioUrl} type="audio/mpeg" />
+                            Your browser does not support the audio tag.
+                          </audio>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
