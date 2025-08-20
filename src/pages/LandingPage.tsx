@@ -294,8 +294,8 @@ export function LandingPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">AI Solutions & Examples</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-               Discover our comprehensive AI solutions with real examples and live demonstrations.
-             </p>
+              Discover our comprehensive AI solutions with real examples and live demonstrations.
+            </p>
           </div>
 
           {/* RAG Agent Examples */}
@@ -352,13 +352,13 @@ export function LandingPage() {
             </div>
           </div>
 
-          {/* Text-to-Video Examples */}
+{/* Text-to-Video Examples */}
           <div className="mb-20">
             <div className="flex items-center mb-8">
               <Video className="h-8 w-8 text-purple-400 mr-3" />
               <h3 className="text-3xl font-bold text-white">🎥 Text-to-Video Examples</h3>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {[
                 {
                   title: 'Event Showcase',
@@ -396,23 +396,25 @@ export function LandingPage() {
                   examples: ['Podcast', 'Storytelling', 'Customer Stories', 'Lyric videos']
                 }
               ].map((category, index) => (
-                <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-purple-500 transition-colors">
-                  <div className="p-4">
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold text-white mb-2">{category.title}</h3>
-                      <p className="text-gray-300 mb-3 text-sm relative pl-6 pr-6">
-                        <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
+                <div key={index} className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-purple-500/50 transition-colors">
+                  <div className="flex flex-col sm:flex-row h-full">
+                    <div className="p-6 flex-1">
+                      <h4 className="text-xl font-semibold text-white mb-3">{category.title}</h4>
+                      <p className="text-gray-300 mb-4 relative pl-8 pr-8 text-sm">
+                        <span className="absolute left-0 top-0 text-3xl font-bold text-purple-400">"</span>
                         {category.description}
-                        <span className="absolute right-0 bottom-0 text-3xl font-bold text-orange-400">"</span>
+                        <span className="absolute right-0 bottom-0 text-3xl font-bold text-purple-400">"</span>
                       </p>
-                      <div className="flex flex-wrap gap-1 mb-3">
+                      <div className="flex flex-wrap gap-2">
                         {category.examples.map((example, i) => (
                           <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
                             {example}
                           </span>
                         ))}
                       </div>
-                      <div className="aspect-video">
+                    </div>
+                    <div className="p-4 flex justify-center items-center sm:justify-start sm:items-start">
+                      <div className="aspect-[9/16] w-full max-w-[120px] sm:max-w-[140px]">
                         <video
                           src={category.video}
                           className="w-full h-full object-cover rounded-lg border border-gray-600"
@@ -517,7 +519,7 @@ export function LandingPage() {
               {/* News Broadcasting - Portrait Video */}
               <div className="bg-gray-800/30 rounded-lg border border-gray-700 overflow-hidden hover:border-orange-500/50 transition-colors">
                 <div className="flex flex-col lg:flex-row">
-                  <div className="p-6 lg:w-2/3">
+                  <div className="p-6 lg:w-4/5">
                     <h4 className="text-xl font-semibold text-white mb-3">News Broadcasting</h4>
                     <p className="text-gray-300 mb-4 relative pl-8 pr-8">
                       <span className="absolute left-0 top-0 text-3xl font-bold text-orange-400">"</span>
@@ -532,8 +534,8 @@ export function LandingPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="lg:w-1/3 p-4 flex justify-center items-center">
-                    <div className="aspect-[9/16] w-full max-w-xs">
+                  <div className="lg:w-1/5 p-4 flex justify-end items-end">
+                    <div className="aspect-[9/16] w-full max-w-[150px] sm:max-w-[180px]">
                       <video
                         src={`${config.baseUri.textToVideoBucket}/anchor.mp4`}
                         className="w-full h-full object-cover rounded-lg border border-gray-600"
